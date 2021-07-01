@@ -28,7 +28,7 @@ namespace CarNS
         public void Drive(double miles)
         {
             //adjust fuel based on mpg and miles requested to drive
-            double maxDistance = MilesPerGallon * GasTankLevel;
+            double maxDistance = MilesPerGallon * GasTankLevel; // maxDistance for test_car is 500
             /**the double below uses some syntax called the ternary operator.
                 * if the value of miles is greater than the value of maxDistance,
                 * then milesAbleToTravel = maxDistance.
@@ -41,5 +41,13 @@ namespace CarNS
             Odometer += milesAbleToTravel;
         }
 
+        public void AddGas(double gas)
+        {
+            GasTankLevel += gas;
+            if (GasTankLevel > GasTankSize)
+            {
+                throw new ArgumentOutOfRangeException("Can't exceed tank size.");
+            }
+        }
     }
 }
